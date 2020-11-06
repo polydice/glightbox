@@ -132,7 +132,7 @@ export function addEvent(eventName, {
             handler.destroy();
         }
     }
-    handler.destroy = function () {
+    handler.destroy = function() {
         each(element, (el) => {
             const events = getNodeEvents(el, eventName, handler);
             if (events.found) {
@@ -362,7 +362,7 @@ export function createIframe(config) {
     if (allow) {
         iframe.setAttribute('allow', allow);
     }
-    iframe.onload = function () {
+    iframe.onload = function() {
         addClass(iframe, 'node-ready');
         if (isFunction(callback)) {
             callback();
