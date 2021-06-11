@@ -55,7 +55,7 @@ export function each(collection, callback) {
          */
         Array.prototype.forEach.call(collection, function (item, i) {
             callback.call(item, item, i, collection);
-        })
+        });
     } else if (isArrayLike(collection) && !isObject(collection)) {
         for (let i = 0; i < collection.length; i++) {
             if (callback.call(collection[i], collection[i], i, collection) === false) {
@@ -88,7 +88,9 @@ export function each(collection, callback) {
 export function getNodeEvents(node, name = null, fn = null) {
     const data = { all: [], evt: null, found: null };
 
-    if (!(node instanceof HTMLElement)) return data;
+    if (!(node instanceof HTMLElement)) {
+return data;
+}
 
     const cache = (node[uid] = node[uid] || []);
     data.all = cache;
@@ -146,7 +148,9 @@ export function addEvent(eventName, {
     each(element, (el) => {
         const events = getNodeEvents(el, eventName, handler);
 
-        if (!events) return;
+        if (!events) {
+return;
+}
 
         if (el.addEventListener && (avoidDuplicate && !events.found) || !avoidDuplicate) {
             el.addEventListener(eventName, handler, useCapture);
@@ -522,7 +526,7 @@ export function isNode(el) {
     return !!(el && el.nodeType && el.nodeType == 1);
 }
 export function isNodeList(collection) {
-    return NodeList.prototype.isPrototypeOf(collection)
+    return NodeList.prototype.isPrototypeOf(collection);
 }
 export function isArray(ar) {
     return Array.isArray(ar);
