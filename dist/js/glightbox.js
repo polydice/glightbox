@@ -114,7 +114,11 @@
       evt: null,
       found: null
     };
-    if (!(node instanceof HTMLElement)) return data;
+
+    if (!(node instanceof HTMLElement)) {
+      return data;
+    }
+
     var cache = node[uid] = node[uid] || [];
     data.all = cache;
 
@@ -174,7 +178,10 @@
 
     each(element, function (el) {
       var events = getNodeEvents(el, eventName, handler);
-      if (!events) return;
+
+      if (!events) {
+        return;
+      }
 
       if (el.addEventListener && avoidDuplicate && !events.found || !avoidDuplicate) {
         el.addEventListener(eventName, handler, useCapture);
@@ -3673,14 +3680,7 @@
   function glightbox () {
     var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     var instance = new GlightboxInit(options);
-
-    try {
-      instance.init();
-    } catch (error) {
-      console.error('[GLightbox init error]', error);
-      instance = undefined;
-    }
-
+    instance.init();
     return instance;
   }
 
