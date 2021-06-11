@@ -48,6 +48,5 @@
     "temporary": "^1.1.0",
     "terser": "^4.8.0",
     "uninstall": "0.0.0"
-  },
-  "dependencies": {}
+  }
 }
